@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threekit Embed</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@6.6.14/keen-slider.min.css" />
+</head>
+<script src="https://cdn.jsdelivr.net/npm/keen-slider@6.6.14/keen-slider.min.js"></script>
+
+<style>
+    .dot {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: inline-block;
+        border: 1px solid black;
+    }
+
+    .dot:hover {
+        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+    }
+
+    .door-btn {
+        cursor: pointer;
+    }
+
+    .dot-handle:hover {
+        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .dot-handle {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: inline-block;
+        border: 1px solid black;
+        margin-top: 10px;
+        margin: 0 30px 0 30px;
+        cursor: pointer;
+
+    }
+
+    .pbtn {
+        width: 2em;
+        height: 2em;
+        text-align: center;
+        line-height: 2em;
+        border-radius: 1em;
+        background: #428E42;
+        margin: 0 1em;
+        display: inline-block;
+        color: white;
+        position: relative;
+        cursor: pointer;
+    }
+    .pbtn:hover{
+        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+
+    }
+
+    li::before {
+        content: '';
+        position: absolute;
+        top: .9em;
+        left: -4em;
+        width: 4em;
+        height: .2em;
+        background: #428E42;
+        z-index: -1;
+    }
+
+
+    li:first-child::before {
+        display: none;
+    }
+
+    .active {
+        background: #428E42;
+    }
+
+    .active~li {
+        background: #6bb36b;
+    }
+
+    .active~li::before {
+        background: #6bb36b;
+    }
+
+    .attr-title {
+        font-weight: bold;
+    }
+
+
+    .app {
+        /* margin: 0 auto;
+        width: 960px;*/
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+            sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    #state {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: -20px
+    }
+
+
+    .swatch-container {
+        display: inline-block;
+        vertical-align: top;
+        height: 2em;
+    }
+
+    .inline {
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    .container {
+        border: 1px solid #6bb36b;
+        border-style: dashed;
+        border-radius: 500px;
+        margin: 20px;
+        height: 100px;
+        width: 100%;
+        background-color: #f4f4f4;
+        max-width: 500px
+    }
+
+    .door-btn {
+        border: 1px solid #6bb36b;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #6bb36b;
+        color: white;
+    }
+
+    @media only screen and (min-width: 768px) {
+
+        /* tablets and desktop */
+        #player {
+            height: 500px;
+            width: 45vw;
+            float: left;
+
+        }
+
+        #config-container {
+            float: left;
+            margin: 20px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+
+        /* phones */
+        #player {
+            height: 500px;
+            width: 100vw;
+
+        }
+
+        #config-container {
+            margin: 20px;
+        }
+    }
+
+    /* Desktop Styles */
+</style>
+
+<body>
+    <div class="app">
+        <div id="player-container">
+            <div id="player"></div>
+        </div>
+        <center>
+
+
+            <div id="config-container">
+                <div class="container">
+                    <center>
+                        <p class="attr-title">State</p>
+
+                    </center>
+
+
+                    <div id="state">
+                        <ul>
+                            <li class="pbtn" id="Closed">0%</li>
+                            <li class="pbtn" id="30%">30%</li>
+                            <li class="pbtn" id="50%">50%</li>
+                            <li class="pbtn" id="Open">100%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <center>
+                        <p class="attr-title">Color</p>
+
+                    </center>
+                    <span class="inline">&#9668</span>
+
+                    <div class="swatch-container">
+                        <div id="color-slider" class="keen-slider">
+                            <div class="keen-slider__slide number-slide1"><span class="dot"
+                                    id="29dff6c1-9f5e-4bc0-9a18-59d7a953969e" style="background-color: #ffffff"></span>
+                            </div>
+                            <div class="keen-slider__slide number-slide2"><span class="dot"
+                                    id="42ed2538-e70a-42bf-ae42-42324684e80a" style="background-color: #999B9E"></span>
+                            </div>
+                            <div class="keen-slider__slide number-slide3"><span class="dot"
+                                    id="d60979fb-1439-451b-8a3d-12976acbc518" style="background-color: #A42B2C"></span>
+                            </div>
+                            <div class="keen-slider__slide number-slide4"><span class="dot"
+                                    id="24c3dcb7-37da-488b-97b1-edcfbe750ada" style="background-color: #3F60C9"></span>
+                            </div>
+                            <div class="keen-slider__slide number-slide5"><span class="dot"
+                                    id="bf91df50-4b81-41e5-9c64-f38808ee058d" style="background-color: #285C38"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="inine">&#9654</span>
+                </div>
+
+
+                <div class=" container">
+                    <center>
+                        <p class="attr-title">Handle Color</p>
+
+
+                    </center>
+
+                    <span class="dot-handle" id="249fa4b0-e548-4be7-9650-c5edd43a7b11"
+                        style="background-color: #C0C0C0"></span>
+                    <span class="dot-handle" id="9a501f84-4d70-4f93-8cd9-0e7ad9867b06"
+                        style="background-color: #000000"></span>
+                    <span class="dot-handle" id="ab4a4afb-6e7e-4ad5-907a-c8891a7fd5af"
+                        style="background-color: #ffffff"></span>
+
+                </div>
+                <div class="container">
+                    <center>
+                        <p class="attr-title">Door Style</p>
+
+                        <buton class="door-btn" id="6e16a24b-27c2-4f3a-8c16-617c0846ee68">Panel</buton>
+                        <buton class="door-btn" id="5dc920dc-09df-4d01-8772-a3b1a06b1635">Glass Mutins</buton>
+
+                    </center>
+                </div>
+
+        </center>
+    </div>
+    </div>
+
+    <script src="https://preview.threekit.com/app/js/threekit-player.js"></script>
+    <script>
+        var pbtn = document.getElementsByClassName("pbtn");
+        var colors = document.getElementsByClassName("dot");
+        var handles = document.getElementsByClassName("dot-handle");
+        var doors = document.getElementsByClassName("door-btn");
+
+
+
+
+        function setPercent(e) {
+            configurator.setConfiguration({ 'Door Position - Fortune': e.target.id })
+        }
+        function setColor(e) {
+            configurator.setConfiguration({ 'Door Color': { assetId: e.target.id } })
+        }
+        function setHandle(e) {
+            configurator.setConfiguration({ 'Handle Color': { assetId: e.target.id } })
+        }
+        function setDoor(e) {
+            configurator.setConfiguration({ 'Door Style': { assetId: e.target.id } })
+        }
+        for (var i = 0; i < pbtn.length; i++) {
+            pbtn[i].addEventListener('click', setPercent, false);
+        }
+        for (var i = 0; i < colors.length; i++) {
+            colors[i].addEventListener('click', setColor, false);
+        }
+        for (var i = 0; i < handles.length; i++) {
+            handles[i].addEventListener('click', setHandle, false);
+        }
+        for (var i = 0; i < doors.length; i++) {
+            doors[i].addEventListener('click', setDoor, false);
+        }
+
+        var slider = new KeenSlider("#color-slider", {
+            slides: {
+                perView: 2,
+                spacing: 20,
+            },
+        })
+
+
+        window
+            .threekitPlayer({
+                authToken: "",
+                el: document.getElementById("player"),
+                //  stageId: 'd27f0a04-9102-467f-8eb5-7926818dbb28',
+                assetId: "c387bfd1-b391-4581-8e80-5f11301c593a",
+                showConfigurator: false,
+                showAR: true
+            })
+            .then(async api => {
+                window.player = api;
+                window.configurator = await api.getConfigurator();
+                await api.when("loaded");
+
+            });         
+    </script>
+</body>
+
+</html>
